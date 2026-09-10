@@ -21,6 +21,8 @@ class AppConfig {
     public readonly openaiApiKey = process.env.OPENAI_API_KEY!;
     public readonly openaiModel = "gpt-5";
     public readonly openaiUrl = "https://api.openai.com/v1/chat/completions";
+    public readonly mysqlPort = Number(process.env.MYSQL_PORT) || 3306;
+    public readonly mysqlSsl = process.env.MYSQL_SSL === "true";
 
 }
 

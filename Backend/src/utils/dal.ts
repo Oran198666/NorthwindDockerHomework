@@ -5,12 +5,14 @@ import { appConfig } from "./app-config";
 class Dal {
 
     // Configuration for our database:
-    private readonly options: PoolOptions = {
-        host: appConfig.mysqlHost,
-        user: appConfig.mysqlUser,
-        password: appConfig.mysqlPassword,
-        database: appConfig.mysqlDatabase
-    };
+private readonly options: PoolOptions = {
+    host: appConfig.mysqlHost,
+    port: appConfig.mysqlPort,
+    user: appConfig.mysqlUser,
+    password: appConfig.mysqlPassword,
+    database: appConfig.mysqlDatabase,
+    ...(appConfig.mysqlSsl ? { ssl: { rejectUnauthorized: false } } : {})
+};
 
     // Connection object:
     private readonly connection = mysql2.createPool(this.options);
